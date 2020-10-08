@@ -1,0 +1,106 @@
+{
+  "_from": "eosjs@21.0.2",
+  "_id": "eosjs@21.0.2",
+  "_inBundle": false,
+  "_integrity": "sha512-oRrjfzS6An825IupBGKnn9UXqVUSEpjKw5xH17OYtrlOoJdlDN97yuDITSTVOqBeryIBxHvss59FFgnx4c+YEg==",
+  "_location": "/eosjs",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "eosjs@21.0.2",
+    "name": "eosjs",
+    "escapedName": "eosjs",
+    "rawSpec": "21.0.2",
+    "saveSpec": null,
+    "fetchSpec": "21.0.2"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/eosjs/-/eosjs-21.0.2.tgz",
+  "_shasum": "e2e675e13515f8a4b9947e968737452b1146fdfc",
+  "_spec": "eosjs@21.0.2",
+  "_where": "/Users/pc/workspace",
+  "author": {
+    "name": "block.one"
+  },
+  "bugs": {
+    "url": "https://github.com/EOSIO/eosjs/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "elliptic": "6.5.3",
+    "hash.js": "1.1.7",
+    "pako": "1.0.11"
+  },
+  "deprecated": false,
+  "description": "Talk to eos API",
+  "devDependencies": {
+    "@blockone/eslint-config-blockone": "^3.0.0",
+    "@types/elliptic": "^6.4.12",
+    "@types/jest": "^26.0.4",
+    "@types/node": "^14.0.23",
+    "@types/pako": "^1.0.1",
+    "cypress": "^4.10.0",
+    "eosjs-ecc": "^4.0.7",
+    "eslint": "^6.8.0",
+    "jest": "^26.1.0",
+    "jest-fetch-mock": "^3.0.3",
+    "ts-jest": "^26.1.2",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.6",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "homepage": "https://github.com/EOSIO/eosjs#readme",
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "./src/tests/setupJest.js"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(tsx?)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "testRegex": "(/src/.*(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "testEnvironment": "node"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "name": "eosjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EOSIO/eosjs.git"
+  },
+  "resolutions": {
+    "lodash": "4.17.19"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p ./tsconfig.json && node scripts/copy-ripe-md.js",
+    "build-production": "yarn build && yarn build-web && yarn test-all",
+    "build-web": "rm -rf dist-web && webpack --config webpack.prod.js && webpack --config webpack.debug.js",
+    "cypress": "cypress run --spec 'cypress/integration/index.spec.js'",
+    "cypress-ui": "cypress open",
+    "docs-build": "sh .docs/scripts/build.sh",
+    "docs-init": "sh .docs/scripts/init.sh",
+    "docs-publish": "sh .docs/scripts/publish.sh",
+    "docs-serve": "python -m SimpleHTTPServer",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "prepare": "npm run build",
+    "test": "jest src/tests/*eosjs*",
+    "test-all": "yarn test && yarn test-node && yarn cypress",
+    "test-node": "jest src/tests/*node*"
+  },
+  "version": "21.0.2"
+}
