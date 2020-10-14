@@ -35,11 +35,63 @@ async function registerid(idx, ID) {
 
 };
 
+async function setRoutePlan(IDX, SHIP_IDX, WAYPOINT) {
+
+    const result = await api.transact({
+    actions: [{
+    account: 'mcp.io',
+    name: 'setrouteplan',
+    authorization: [{
+    actor: 'mcp.io',
+    permission: 'active',
+    }],
+    data: {
+    index: IDX,
+    ship_index: SHIP_IDX,
+    way_point: WAYPOINT,
+    },
+    }]
+    }, {
+    blocksBehind: 3,
+    expireSeconds: 30,
+    });
+    
+    return result;
+
+};
+
+async function planErase(IDX) {
+
+    const result = await api.transact({
+    actions: [{
+    account: 'mcp.io',
+    name: 'planerase',
+    authorization: [{
+    actor: 'mcp.io',
+    permission: 'active',
+    }],
+    data: {
+    index: IDX,
+    },
+    }]
+    }, {
+    blocksBehind: 3,
+    expireSeconds: 30,
+    });
+    
+    return result;
+
+};
+
 //registerid(7, 'test7');
+//setRoutePlan(4, 666666, "586.2560323,111.9838708");
+//planErase(4);
 
 module.exports = {
 
     registerid: registerid,
+    setRoutePlan: setRoutePlan,
+    planErase: planErase,
 
 };
 
