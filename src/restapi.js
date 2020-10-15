@@ -1,4 +1,5 @@
 var express = require('express');
+var cors = require('cors');
 
 var bodyParser = require('body-parser');
 
@@ -14,6 +15,9 @@ const registerId = login.registerid;
 const setRoutePlan = login.setRoutePlan;
 const planErase = login.planErase;
 const getRoutePlan = gettable.getRoutePlan;
+
+// CORS 설정
+app.use(cors());
 
 
 app.use(bodyParser.urlencoded({extended:false}));
