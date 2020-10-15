@@ -36,14 +36,18 @@ app.post('/setRoutePlanInfo', function(req,res) {
     var ship_index = req.body.ship_index;
 
     var way_point = req.body.way_point;
+
+    var user_id = req.body.user_id;
+
+    var create_date = req.body.create_date;
     
     (async () => {
 
         //var index = await req.body.index;
 
-        console.log("Index: " + index + ", Ship Index: " + ship_index + ", Way_Point: " + way_point);
+        console.log("Index: " + index + ", Ship Index: " + ship_index + ", Way_Point: " + way_point + ", User ID: " + user_id + ", Create Date: " + create_date);
     
-        var str = await setRoutePlan(index, ship_index, way_point);
+        var str = await setRoutePlan(index, ship_index, way_point, user_id, create_date);
 
         return res.json(str);
     

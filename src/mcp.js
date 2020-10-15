@@ -35,7 +35,7 @@ async function registerid(idx, ID) {
 
 };
 
-async function setRoutePlan(IDX, SHIP_IDX, WAYPOINT) {
+async function setRoutePlan(IDX, SHIP_IDX, WAYPOINT, ID, DATE) {
 
     const result = await api.transact({
     actions: [{
@@ -49,6 +49,8 @@ async function setRoutePlan(IDX, SHIP_IDX, WAYPOINT) {
     index: IDX,
     ship_index: SHIP_IDX,
     way_point: WAYPOINT,
+    user_id: ID,    
+    create_date: DATE,
     },
     }]
     }, {
