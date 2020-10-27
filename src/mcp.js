@@ -85,6 +85,114 @@ async function planErase(IDX) {
 
 };
 
+async function setNMNWList(IDX, LIST_TYPE, FROM_DATE, TO_DATE, TITLE) {
+
+    const result = await api.transact({
+    actions: [{
+    account: 'mcp.io',
+    name: 'setnmnwlist',
+    authorization: [{
+    actor: 'mcp.io',
+    permission: 'active',
+    }],
+    data: {
+    index: IDX,
+    list_type: LIST_TYPE,
+    from_date: FROM_DATE,
+    to_date: TO_DATE,    
+    title: TITLE,
+    },
+    }]
+    }, {
+    blocksBehind: 3,
+    expireSeconds: 30,
+    });
+    
+    return result;
+
+};
+
+async function delNMNWList(IDX) {
+
+    const result = await api.transact({
+    actions: [{
+    account: 'mcp.io',
+    name: 'delnmnwlist',
+    authorization: [{
+    actor: 'mcp.io',
+    permission: 'active',
+    }],
+    data: {
+    index: IDX,
+    },
+    }]
+    }, {
+    blocksBehind: 3,
+    expireSeconds: 30,
+    });
+    
+    return result;
+
+};
+
+async function setNMNWInfo(IDX, SHORT_ID, DATA_TYPE, STATUS, FROM_DATE, TO_DATE, FEATURE_TYPE, FEATURE_GEOM, TITLE, DESC, USER_ID, COUNTRY) {
+
+    const result = await api.transact({
+    actions: [{
+    account: 'mcp.io',
+    name: 'setnmnwinfo',
+    authorization: [{
+    actor: 'mcp.io',
+    permission: 'active',
+    }],
+    data: {
+    index: IDX,
+    short_id: SHORT_ID,
+    data_type: DATA_TYPE,
+    status: STATUS,
+    from_date: FROM_DATE,    
+    to_date: TO_DATE,
+    feature_type: FEATURE_TYPE,
+    feature_geom: FEATURE_GEOM,
+    title: TITLE,
+    desc: DESC,
+    user_id: USER_ID,
+    country: COUNTRY,
+    },
+    }]
+    }, {
+    blocksBehind: 3,
+    expireSeconds: 30,
+    });
+    
+    return result;
+
+};
+
+async function delNMNWInfo(IDX) {
+
+    const result = await api.transact({
+    actions: [{
+    account: 'mcp.io',
+    name: 'delnmnwinfo',
+    authorization: [{
+    actor: 'mcp.io',
+    permission: 'active',
+    }],
+    data: {
+    index: IDX,
+    },
+    }]
+    }, {
+    blocksBehind: 3,
+    expireSeconds: 30,
+    });
+    
+    return result;
+
+};
+
+
 //registerid(7, 'test7');
 //setRoutePlan(4, 666666, "586.2560323,111.9838708");
 //planErase(4);
@@ -94,6 +202,10 @@ module.exports = {
     registerid: registerid,
     setRoutePlan: setRoutePlan,
     planErase: planErase,
+    setNMNWList: setNMNWList,
+    delNMNWList: delNMNWList,
+    setNMNWInfo: setNMNWInfo,
+    delNMNWInfo: delNMNWInfo,
 
 };
 

@@ -11,10 +11,18 @@ const app = express();
 const getTable = gettable.getTable;
 const registerId = login.registerid;
 
-
 const setRoutePlan = login.setRoutePlan;
 const planErase = login.planErase;
 const getRoutePlan = gettable.getRoutePlan;
+
+const setNMNWList = login.setNMNWList;
+const delNMNWList = login.delNMNWList;
+const getNMNWList = gettable.getNMNWList;
+
+const setNMNWInfo = login.setNMNWInfo;
+const delNMNWInfo = login.delNMNWInfo;
+const getNMNWInfo = gettable.getNMNWInfo;
+
 
 // CORS 설정
 app.use(cors());
@@ -182,6 +190,158 @@ app.post('/gettable', function(req,res) {
     })();
     
 });
+
+app.post('/setNmNwList', function(req,res) {
+
+    var index = req.body.index;
+    
+    var list_type = req.body.list_type;
+
+    var from_date = req.body.from_date;
+
+    var to_date = req.body.to_date;
+
+    var title = req.body.title;
+    
+    (async () => {
+
+        //var index = await req.body.index;
+
+        console.log("Index: " + index + ", List Type: " + list_type + ", From_Date: " + from_date + ", To_Date: " + to_date + ", Title: " + title);
+    
+        var str = await setNMNWList(index, list_type, from_date, to_date, title);
+
+        return res.json(str);
+    
+        //console.log(str);
+    
+    })();
+
+});
+
+app.post('/delNmNwList', function(req,res) {
+
+    var index = req.body.index;
+    
+    (async () => {
+
+        //var index = await req.body.index;
+
+        console.log("Index: " + index);
+    
+        var str = await delNMNWList(index); 
+
+        return res.json(str);
+    
+        //console.log(str);
+    
+    })();
+
+});
+
+app.post('/getNmNwList', function(req,res) {
+
+    //var index = req.body.index;                // 문제발생을 해결하기 위해 body-parser설치 필요
+    
+    (async () => {
+
+        //var index = await req.body.index;
+
+        //console.log("Index: " + index);
+    
+        var str = await getNMNWList(); 
+
+        return res.json(str);
+    
+        //console.log(str);
+    
+    })();
+    
+});
+
+app.post('/setNmNwInfo', function(req,res) {
+
+    var index = req.body.index;
+    
+    var short_id = req.body.short_id;
+
+    var data_type = req.body.data_type;
+
+    var status = req.body.status;
+
+    var from_date = req.body.from_date;
+
+    var to_date = req.body.to_date;
+    
+    var feature_type = req.body.feature_type;
+
+    var feature_geom = req.body.feature_geom;
+
+    var title = req.body.title;
+
+    var desc = req.body.desc;
+
+    var user_id = req.body.user_id;
+
+    var country = req.body.country;
+    
+    (async () => {
+
+        //var index = await req.body.index;
+
+        console.log("Index: " + index + ", Short ID: " + short_id + ", Data Type: " + data_type + ", Status: " + status + ", From_Date: " + from_date + ", To_Date: " + to_date +
+                        "Feature Type: " + feature_type + ", Feature Geom: " + feature_geom + ", Title: " + title + ", Desc: " + desc + ", User ID: " + user_id + ", Country: " + country);
+    
+        var str = await setNMNWInfo(index, short_id, data_type, status, from_date, to_date, feature_type, feature_geom, title, desc, user_id, country);
+
+        return res.json(str);
+    
+        //console.log(str);
+    
+    })();
+
+});
+
+app.post('/delNmNwInfo', function(req,res) {
+
+    var index = req.body.index;
+    
+    (async () => {
+
+        //var index = await req.body.index;
+
+        console.log("Index: " + index);
+    
+        var str = await delNMNWInfo(index); 
+
+        return res.json(str);
+    
+        //console.log(str);
+    
+    })();
+
+});
+
+app.post('/getNmNwDetail', function(req,res) {
+
+    //var index = req.body.index;                // 문제발생을 해결하기 위해 body-parser설치 필요
+    
+    (async () => {
+
+        //var index = await req.body.index;
+
+        //console.log("Index: " + index);
+    
+        var str = await getNMNWInfo(); 
+
+        return res.json(str);
+    
+        //console.log(str);
+    
+    })();
+    
+});
+
 
 app.listen(3000, function() {
 

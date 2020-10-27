@@ -46,6 +46,43 @@ return result;
 
 };
 
+async function getNMNWList() {
+  const result = await rpc.get_table_rows({
+        json: true,               // Get the response as json
+        code: 'mcp.io',      // Contract that we target
+        scope: 'mcp.io',         // Account that owns the data
+        table: 'nmnwlist',        // Table name
+       // lower_bound: idx,
+       // limit: 1,                // Maximum number of rows that we want to get
+        reverse: false,           // Optional: Get reversed data
+        show_payer: false          // Optional: Show ram payer
+  });  
+  
+   //console.dir(result);
+  
+  return result;
+  
+  };
+
+async function getNMNWInfo() {
+  const result = await rpc.get_table_rows({
+        json: true,               // Get the response as json
+        code: 'mcp.io',      // Contract that we target
+        scope: 'mcp.io',         // Account that owns the data
+        table: 'nmnwinfo',        // Table name
+        // lower_bound: idx,
+        // limit: 1,                // Maximum number of rows that we want to get
+        reverse: false,           // Optional: Get reversed data
+        show_payer: false          // Optional: Show ram payer
+  });  
+  
+    //console.dir(result);
+  
+  return result;
+  
+};
+
+
 /*(async () => {
 
   var str = await getRoutePlan();
@@ -67,8 +104,9 @@ return result;
 module.exports = {
 
     getTable: getTable,
-
     getRoutePlan: getRoutePlan,
+    getNMNWList: getNMNWList,
+    getNMNWInfo: getNMNWInfo,
 
 };
 
