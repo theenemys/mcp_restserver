@@ -82,6 +82,23 @@ async function getNMNWInfo() {
   
 };
 
+async function getBuoyInfo() {
+  const result = await rpc.get_table_rows({
+        json: true,               // Get the response as json
+        code: 'mcp.io',      // Contract that we target
+        scope: 'mcp.io',         // Account that owns the data
+        table: 'buoyinfo',        // Table name
+        // lower_bound: idx,
+        // limit: 1,                // Maximum number of rows that we want to get
+        reverse: false,           // Optional: Get reversed data
+        show_payer: false          // Optional: Show ram payer
+  });  
+  
+    //console.dir(result);
+  
+  return result;
+  
+};
 
 /*(async () => {
 
@@ -107,6 +124,7 @@ module.exports = {
     getRoutePlan: getRoutePlan,
     getNMNWList: getNMNWList,
     getNMNWInfo: getNMNWInfo,
+    getBuoyInfo: getBuoyInfo,
 
 };
 

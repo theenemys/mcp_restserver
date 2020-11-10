@@ -23,6 +23,10 @@ const setNMNWInfo = login.setNMNWInfo;
 const delNMNWInfo = login.delNMNWInfo;
 const getNMNWInfo = gettable.getNMNWInfo;
 
+const setBuoyInfo = login.setBuoyInfo;
+const delBuoyInfo = login.delBuoyInfo;
+const getBuoyInfo = gettable.getBuoyInfo;
+
 
 // CORS 설정
 app.use(cors());
@@ -342,6 +346,84 @@ app.post('/getNmNwDetail', function(req,res) {
     
 });
 
+app.post('/setBuoyInfo', function(req,res) {
+
+    var index = req.body.index;
+    
+    var buoy_nm = req.body.buoy_nm;
+
+    var geom = req.body.geom;
+
+    var status = req.body.status;
+
+    var desc = req.body.desc;
+
+    var use_yn = req.body.use_yn;
+
+    var buoy_no = req.body.buoy_no;
+
+    var country = req.body.country;
+
+    var create_date = req.body.create_date;
+
+    var update_date = req.body.update_date;
+    
+    (async () => {
+
+        //var index = await req.body.index;
+
+        console.log("Index: " + index + ", buoy_nm: " + buoy_nm + ", geom: " + geom + ", status: " + status + ", desc: " + desc + ", use_yn: " + use_yn + ", buoy_no: " + buoy_no
+                    + ", country: " + country + ", create_date: " + create_date + ", update_date: " + update_date);
+    
+        var str = await setBuoyInfo(index, buoy_nm, geom, status, desc, use_yn, buoy_no, country, create_date, update_date);
+
+        return res.json(str);
+    
+        //console.log(str);
+    
+    })();
+
+});
+
+app.post('/delBuoyInfo', function(req,res) {
+
+    var index = req.body.index;
+    
+    (async () => {
+
+        //var index = await req.body.index;
+
+        console.log("Index: " + index);
+    
+        var str = await delBuoyInfo(index); 
+
+        return res.json(str);
+    
+        //console.log(str);
+    
+    })();
+
+});
+
+app.post('/getBuoyInfo', function(req,res) {
+
+    //var index = req.body.index;                // 문제발생을 해결하기 위해 body-parser설치 필요
+    
+    (async () => {
+
+        //var index = await req.body.index;
+
+        //console.log("Index: " + index);
+    
+        var str = await getBuoyInfo(); 
+
+        return res.json(str);
+    
+        //console.log(str);
+    
+    })();
+    
+});
 
 app.listen(3000, function() {
 

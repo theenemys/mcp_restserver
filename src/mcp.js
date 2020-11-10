@@ -192,6 +192,60 @@ async function delNMNWInfo(IDX) {
 
 };
 
+async function setBuoyInfo(IDX, BUOY_NM, GEOM, STATUS, DESC, USE_YN, BUOY_NO, COUNTRY, CREATE_DATE, UPDATE_DATE) {
+
+    const result = await api.transact({
+    actions: [{
+    account: 'mcp.io',
+    name: 'setbuoyinfo',
+    authorization: [{
+    actor: 'mcp.io',
+    permission: 'active',
+    }],
+    data: {
+    index: IDX,
+    buoy_nm: BUOY_NM,
+    geom: GEOM,
+    status: STATUS,
+    desc: DESC,    
+    use_yn: USE_YN,
+    buoy_no: BUOY_NO,
+    country: COUNTRY,
+    create_date: CREATE_DATE,
+    update_date: UPDATE_DATE,
+    },
+    }]
+    }, {
+    blocksBehind: 3,
+    expireSeconds: 30,
+    });
+    
+    return result;
+
+};
+
+async function delBuoyInfo(IDX) {
+
+    const result = await api.transact({
+    actions: [{
+    account: 'mcp.io',
+    name: 'delbuoyinfo',
+    authorization: [{
+    actor: 'mcp.io',
+    permission: 'active',
+    }],
+    data: {
+    index: IDX,
+    },
+    }]
+    }, {
+    blocksBehind: 3,
+    expireSeconds: 30,
+    });
+    
+    return result;
+
+};
 
 //registerid(7, 'test7');
 //setRoutePlan(4, 666666, "586.2560323,111.9838708");
@@ -206,6 +260,8 @@ module.exports = {
     delNMNWList: delNMNWList,
     setNMNWInfo: setNMNWInfo,
     delNMNWInfo: delNMNWInfo,
+    setBuoyInfo: setBuoyInfo,
+    delBuoyInfo: delBuoyInfo,
 
 };
 
