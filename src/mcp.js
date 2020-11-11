@@ -192,7 +192,7 @@ async function delNMNWInfo(IDX) {
 
 };
 
-async function setBuoyInfo(IDX, BUOY_NM, GEOM, STATUS, DESC, USE_YN, BUOY_NO, COUNTRY, CREATE_DATE, UPDATE_DATE) {
+async function setBuoyInfo(IDX, BUOY_NM, GEOM, STATUS, DESC, USE_YN, BUOY_NO, COUNTRY, CREATE_DATE, UPDATE_DATE, IMG_URL) {
 
     const result = await api.transact({
     actions: [{
@@ -213,6 +213,7 @@ async function setBuoyInfo(IDX, BUOY_NM, GEOM, STATUS, DESC, USE_YN, BUOY_NO, CO
     country: COUNTRY,
     create_date: CREATE_DATE,
     update_date: UPDATE_DATE,
+    img_url: IMG_URL,
     },
     }]
     }, {

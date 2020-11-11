@@ -367,15 +367,17 @@ app.post('/setBuoyInfo', function(req,res) {
     var create_date = req.body.create_date;
 
     var update_date = req.body.update_date;
+
+    var img_url = req.body.img_url;
     
     (async () => {
 
         //var index = await req.body.index;
 
         console.log("Index: " + index + ", buoy_nm: " + buoy_nm + ", geom: " + geom + ", status: " + status + ", desc: " + desc + ", use_yn: " + use_yn + ", buoy_no: " + buoy_no
-                    + ", country: " + country + ", create_date: " + create_date + ", update_date: " + update_date);
+                    + ", country: " + country + ", create_date: " + create_date + ", update_date: " + update_date + ", img_url: " + img_url);
     
-        var str = await setBuoyInfo(index, buoy_nm, geom, status, desc, use_yn, buoy_no, country, create_date, update_date);
+        var str = await setBuoyInfo(index, buoy_nm, geom, status, desc, use_yn, buoy_no, country, create_date, update_date, img_url);
 
         return res.json(str);
     
